@@ -9,8 +9,14 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import styles from './BillboardWebPart.module.scss';
 import * as strings from 'BillboardWebPartStrings';
 
+import { SPComponentLoader } from '@microsoft/sp-loader';
+
 import * as $ from 'jquery';
-require('Bluebox.Billboard');
+// require('Bluebox.Util');
+// require('Bluebox.Constants');
+// require('Bluebox.Loader');
+// require('Bluebox.UtilWait');
+// require('Bluebox.Billboard');
 
 declare var jQuery:any;
 declare var Bluebox:any;
@@ -43,21 +49,14 @@ export interface IBillboardWebPartProps {
 export default class BillboardWebPart extends BaseClientSideWebPart<IBillboardWebPartProps> {
 
   public render(): void {
-    this.domElement.innerHTML = `
-      <div class="${ styles.billboard }">
-        <div class="${ styles.container }">
-          <div class="${ styles.row }">
-            <div class="${ styles.column }">
-              <span class="${ styles.title }">Welcome to SharePoint!</span>
-              <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
-              <a href="https://aka.ms/spfx" class="${ styles.button }">
-                <span class="${ styles.label }">Learn more</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>`;
+    
+    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Util.js', {globalExportsName: 'Bluebox.Util'});
+    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Constants.js', {globalExportsName: 'Bluebox.Constants'});
+    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Loader.js', {globalExportsName: 'Bluebox.Loader'});
+    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js', {globalExportsName: 'Bluebox.Billboard'});
+       
+    this.domElement.innerHTML = '<div id="bb-billboard" class="bb-listview"></div>';
+    // Bluebox.Billboard.Execute(true,_options);
   }
 
   protected get dataVersion(): Version {
