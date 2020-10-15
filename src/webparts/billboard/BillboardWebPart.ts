@@ -49,14 +49,19 @@ export interface IBillboardWebPartProps {
 export default class BillboardWebPart extends BaseClientSideWebPart<IBillboardWebPartProps> {
 
   public render(): void {
-    
-    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Util.js', {globalExportsName: 'Bluebox.Util'});
-    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Constants.js', {globalExportsName: 'Bluebox.Constants'});
-    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Loader.js', {globalExportsName: 'Bluebox.Loader'});
-    SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js', {globalExportsName: 'Bluebox.Billboard'});
-       
     this.domElement.innerHTML = '<div id="bb-billboard" class="bb-listview"></div>';
-    // Bluebox.Billboard.Execute(true,_options);
+
+     SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Constants.js', {globalExportsName: 'Bluebox.Constants'})
+      .then(() => {
+        SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Loader.js', {globalExportsName: 'Bluebox.Loader'})
+        .then(() => {
+          SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js', {globalExportsName: 'Bluebox.Billboard'})
+          .then(()=> Bluebox.Billboard.Execute(true,_options))
+          .catch(() => console.log("Bluebox.Billboard not loaded"));
+        })
+        .catch(() => console.log("Bluebox.Loader not loaded"));
+      })
+      .catch(() => console.log("Bluebox.Constants not loaded"));
   }
 
   protected get dataVersion(): Version {

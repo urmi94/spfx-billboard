@@ -15,26 +15,6 @@
     "jquery": {
       "path": "https://code.jquery.com/jquery-3.3.1.js",
       "globalName": "jQuery"
-    },
-   "Bluebox.Billboard" : {
-      "path": "https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js",
-      "globalName": "Bluebox.Billboard",
-      "globalDependencies": ["jquery"]
-    },
-    "Bluebox.Util" : {
-      "path": "https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Util.js",
-      "globalName": "Bluebox.Util",
-      "globalDependencies": ["jquery"]
-    },
-    "Bluebox.Constants" : {
-      "path": "https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Constants.js",
-      "globalName": "Bluebox.Constants",
-      "globalDependencies": ["jquery"]
-    },
-    "Bluebox.Loader" : {
-      "path": "https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Loader.js",
-      "globalName": "Bluebox.Loader",
-      "globalDependencies": ["jquery"]
     }
   },
   "localizedResources": {
