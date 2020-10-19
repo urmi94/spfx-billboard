@@ -21,7 +21,11 @@
     "description": { "default": "billboard description" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "billboard"
+      "itemLimit": 5,  
+      "itemDuration": 7, 
+      "includeTitle": false,
+      "isReqItemLimit": true,
+      "isReqItemDur": true
     }
   }]
 }
