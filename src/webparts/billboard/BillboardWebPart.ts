@@ -60,7 +60,8 @@ export default class BillboardWebPart extends BaseClientSideWebPart<IBillboardWe
       .then(() => {
         SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/scripts/Bluebox.Loader.js', {globalExportsName: 'Bluebox.Loader'})
         .then(() => {
-          SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js', {globalExportsName: 'Bluebox.Billboard'})
+          SPComponentLoader.loadScript('https://bbxclientsdevstoragecdn.blob.core.windows.net/urmi-broadcast/Billboard.js', {globalExportsName: 'Bluebox.Billboard'})
+          // SPComponentLoader.loadScript('https://blueboxsolutionsdev.sharepoint.com/teams/devs_318_bbstyling/_catalogs/masterpage/Bluebox/webparts/billboard/billboard_utilwait.js', {globalExportsName: 'Bluebox.Billboard'})
           .then(()=> Bluebox.Billboard.Execute(true,_options))
           .catch(() => console.log("Bluebox.Billboard not loaded"));
         })

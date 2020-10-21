@@ -4,7 +4,7 @@
     "name": "billboard-client-side-solution",
     "id": "e8396670-59c6-4294-9139-b55eda47a8bb",
     "version": "1.0.0.0",
-    "includeClientSideAssets": true,
+    "includeClientSideAssets": false,
     "isDomainIsolated": false,
     "developer": {
       "name": "",
